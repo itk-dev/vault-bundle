@@ -1,0 +1,42 @@
+{
+    "name": "itk-dev/vault-bundle",
+    "description": "Symfony bundle for vault",
+    "license": "MIT",
+    "type": "symfony-bundle",
+    "minimum-stability": "dev",
+    "authors": [
+        {
+	      "name": "Jesper Kristensen",
+	      "email": "cableman@linuxdev.dk",
+	      "homepage": "https://linuxdev.dk",
+	      "role": "Developer"
+	    }
+    ],
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/itk-dev/vault-library.git"
+        }
+    ],
+    "require": {
+        "php": "^8.2",
+        "itk-dev/vault": "dev-main",
+        "symfony/http-client": "7.2.x-dev"
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^3.64"
+    },
+    "autoload": {
+        "psr-4": {
+            "ItkDev\\VaultBundle\\": "src/"
+        }
+    },
+    "scripts": {
+	    "coding-standards-apply": [
+	      "PHP_CS_FIXER_IGNORE_ENV=1 vendor/bin/php-cs-fixer fix"
+	    ],
+	    "coding-standards-check": [
+	      "PHP_CS_FIXER_IGNORE_ENV=1 vendor/bin/php-cs-fixer fix --dry-run"
+	    ]
+    }
+}
