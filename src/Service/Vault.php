@@ -3,13 +3,13 @@
 namespace ItkDev\VaultBundle\Service;
 
 use ItkDev\Vault\Model\Token;
-use ItkDev\Vault\Vault;
+use ItkDev\Vault\Vault as VaultClient;
 use Psr\Http\Client\ClientInterface;
 use Psr\Http\Message\RequestFactoryInterface;
 use Psr\Http\Message\StreamFactoryInterface;
 use Psr\SimpleCache\CacheInterface;
 
-readonly class VaultService
+readonly class Vault
 {
     public function __construct(
         private ClientInterface $client,
@@ -40,7 +40,7 @@ readonly class VaultService
 
     private function getVault()
     {
-        return new Vault(
+        return new VaultClient(
             httpClient: $this->client,
             requestFactory: $this->requestFactory,
             streamFactory: $this->streamFactory,

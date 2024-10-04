@@ -1,0 +1,19 @@
+services:
+    # default configuration for services in *this* file
+    _defaults:
+        autowire: true      # Automatically injects dependencies in your services.
+        autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
+
+    # Register a PSR-6 to PSR-16 cache bridge
+    cache.simple:
+        class: Symfony\Component\Cache\Psr16Cache
+        arguments:
+            - '@cache.app' # Pass the PSR-6 adapter
+
+    # Alias the service for autowiring purposes
+    Psr\SimpleCache\CacheInterface: '@cache.simple'
+
+    ItkDev\VaultBundle\Service\Vault:
+        arguments:
+            $vaultUrl: '%env(resolve:VAULT_URL)%'
+            $cache: '@Psr\SimpleCache\CacheInterface'
