@@ -21,7 +21,7 @@
     "require": {
         "php": "^8.2",
         "itk-dev/vault": "dev-main",
-        "symfony/http-client": "7.2.x-dev"
+        "symfony/http-client": "7.1.*"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^3.64"
