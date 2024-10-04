@@ -17,7 +17,8 @@ readonly class VaultService
         private StreamFactoryInterface $streamFactory,
         private CacheInterface $cache,
         private string $vaultUrl,
-    ) {}
+    ) {
+    }
 
     public function login(string $roleId, string $secretId, string $enginePath = 'approle'): Token
     {
@@ -37,7 +38,8 @@ readonly class VaultService
         );
     }
 
-    private function getVault() {
+    private function getVault()
+    {
         return new Vault(
             httpClient: $this->client,
             requestFactory: $this->requestFactory,
