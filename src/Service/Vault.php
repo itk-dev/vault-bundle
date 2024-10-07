@@ -2,6 +2,7 @@
 
 namespace ItkDev\VaultBundle\Service;
 
+use ItkDev\Vault\Model\Secret;
 use ItkDev\Vault\Model\Token;
 use ItkDev\Vault\Vault as VaultClient;
 use Psr\Http\Client\ClientInterface;
@@ -25,13 +26,28 @@ readonly class Vault
         return $this->getVault()->login($roleId, $secretId, $enginePath, $refreshCache);
     }
 
-    public function getSecrets(Token $token, string $path, string $secret, array $ids, bool $useCache = false, bool $refreshCache = false, int $expire = 0): array
+    public function getSecret(Token $token, string $path, string $secret, string $id, ?int $version = null, bool $useCache = false, bool $refreshCache = false, int $expire = 0): Secret
+    {
+        return $this->getVault()->getSecret(
+            token: $token,
+            path: $path,
+            secret: $secret,
+            id: $id,
+            version: $version,
+            useCache: $useCache,
+            refreshCache: $refreshCache,
+            expire: $expire
+        );
+    }
+
+    public function getSecrets(Token $token, string $path, string $secret, array $ids, ?int $version = null, bool $useCache = false, bool $refreshCache = false, int $expire = 0): array
     {
         return $this->getVault()->getSecrets(
             token: $token,
             path: $path,
             secret: $secret,
             ids: $ids,
+            version: $version,
             useCache: $useCache,
             refreshCache: $refreshCache,
             expire: $expire
