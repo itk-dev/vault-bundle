@@ -8,6 +8,7 @@ See [keep a changelog] for information about writing changes to this log.
 
 ## [Unreleased]
 
+* Added helper commands to interacrt with the vault
 * Statet on bundle
 
 [keep a changelog]: https://keepachangelog.com/en/1.1.0/

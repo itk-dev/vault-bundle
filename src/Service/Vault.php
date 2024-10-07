@@ -20,9 +20,9 @@ readonly class Vault
     ) {
     }
 
-    public function login(string $roleId, string $secretId, string $enginePath = 'approle'): Token
+    public function login(string $roleId, string $secretId, string $enginePath = 'approle', bool $refreshCache = false): Token
     {
-        return $this->getVault()->login($roleId, $secretId, $enginePath, refreshCache: false);
+        return $this->getVault()->login($roleId, $secretId, $enginePath, $refreshCache);
     }
 
     public function getSecrets(Token $token, string $path, string $secret, array $ids, bool $useCache = false, bool $refreshCache = false, int $expire = 0): array
