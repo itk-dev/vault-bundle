@@ -42,10 +42,11 @@ class VaultSecretCommand extends Command
     }
 
     /**
-     * @throws \DateMalformedStringException
-     * @throws VaultException
-     * @throws NotFoundException
      * @throws InvalidArgumentException
+     * @throws NotFoundException
+     * @throws VaultException
+     * @throws \DateMalformedIntervalStringException
+     * @throws \DateMalformedStringException
      */
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
