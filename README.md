@@ -52,7 +52,15 @@ parameters:
   $myOtherSecret: '%env(vault:MY_OTHER_SECRET)%'
 
 App\Command\TestCommand:
-        arguments:
-            $secret: '%env(vault:MY_SECRET)%'
-
+  arguments:
+    $secret: '%env(vault:MY_SECRET)%'
 ```
+
+## CLI support
+
+This bundle also comes with two CLI commands to help debug configuration and to
+check that you fetch the expected data from the vault. Use the `--help` option
+to symfony console to see the options available for the commands.
+
+* itkdev:vault:login
+* itkdev:vault:secret

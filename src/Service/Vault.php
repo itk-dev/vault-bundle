@@ -24,6 +24,12 @@ readonly class Vault
     ) {
     }
 
+    /**
+     * @throws \DateMalformedStringException
+     * @throws VaultException
+     * @throws InvalidArgumentException
+     * @throws \DateMalformedIntervalStringException
+     */
     public function login(string $roleId, string $secretId, string $enginePath = 'approle', bool $refreshCache = false): Token
     {
         return $this->getVault()->login($roleId, $secretId, $enginePath, $refreshCache);

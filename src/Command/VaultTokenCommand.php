@@ -2,7 +2,9 @@
 
 namespace ItkDev\VaultBundle\Command;
 
+use ItkDev\Vault\Exception\VaultException;
 use ItkDev\VaultBundle\Service\Vault;
+use Psr\SimpleCache\InvalidArgumentException;
 use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
@@ -32,6 +34,13 @@ class VaultTokenCommand extends Command
         ;
     }
 
+    /**
+     * @throws VaultException
+     * @throws \DateMalformedStringException
+     * @throws \DateInvalidOperationException
+     * @throws \DateMalformedIntervalStringException
+     * @throws InvalidArgumentException
+     */
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $io = new SymfonyStyle($input, $output);

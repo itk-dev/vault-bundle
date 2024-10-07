@@ -2,8 +2,11 @@
 
 namespace ItkDev\VaultBundle\Command;
 
+use ItkDev\Vault\Exception\NotFoundException;
+use ItkDev\Vault\Exception\VaultException;
 use ItkDev\Vault\Model\Secret;
 use ItkDev\VaultBundle\Service\Vault;
+use Psr\SimpleCache\InvalidArgumentException;
 use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
@@ -38,6 +41,12 @@ class VaultSecretCommand extends Command
         ;
     }
 
+    /**
+     * @throws \DateMalformedStringException
+     * @throws VaultException
+     * @throws NotFoundException
+     * @throws InvalidArgumentException
+     */
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $io = new SymfonyStyle($input, $output);
