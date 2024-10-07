@@ -2,18 +2,27 @@
 
 namespace ItkDev\VaultBundle\Processor;
 
+use ItkDev\Vault\Exception\NotFoundException;
+use ItkDev\Vault\Exception\VaultException;
 use ItkDev\VaultBundle\Service\Vault;
+use Psr\SimpleCache\InvalidArgumentException;
 use Symfony\Component\DependencyInjection\EnvVarProcessorInterface;
 
 readonly class VaultEnvResolver implements EnvVarProcessorInterface
 {
     public function __construct(
         private Vault $vaultService,
-        private readonly string $roleId,
-        private readonly string $secretId,
+        private string $roleId,
+        private string $secretId,
     ) {
     }
 
+    /**
+     * @throws \DateMalformedStringException
+     * @throws VaultException
+     * @throws NotFoundException
+     * @throws InvalidArgumentException
+     */
     public function getEnv(string $prefix, string $name, \Closure $getEnv): mixed
     {
         $nameValue = $getEnv($name);
@@ -43,6 +52,11 @@ readonly class VaultEnvResolver implements EnvVarProcessorInterface
      *
      * @return string
      *   The secret found
+     *
+     * @throws \DateMalformedStringException
+     * @throws NotFoundException
+     * @throws VaultException
+     * @throws InvalidArgumentException
      */
     private function getSecret(string $path, string $secret, string $id, ?int $version = null, ?int $expire = null): string
     {
@@ -54,7 +68,7 @@ readonly class VaultEnvResolver implements EnvVarProcessorInterface
             id: $id,
             version: $version,
             useCache: !is_null($expire),
-            expire: $expire,
+            expire: $expire ?? 0,
         );
 
         return $val->value;
