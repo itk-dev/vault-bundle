@@ -8,9 +8,10 @@ See [keep a changelog] for information about writing changes to this log.
 
 ## [Unreleased]
 
-* Added enviroment processor
-* Added helper commands to interacrt with the vault
-* Statet on bundle
+* Added basic documentation in readme.
+* Added environment processor.
+* Added helper commands to interact with the vault.
+* Basic bundle setup.
 
 [keep a changelog]: https://keepachangelog.com/en/1.1.0/
 [unreleased]: https://github.com/itk-dev/vault-bundle/compare/main...develop
