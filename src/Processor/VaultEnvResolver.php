@@ -42,6 +42,7 @@ readonly class VaultEnvResolver implements EnvVarProcessorInterface
      *   Cache this secret in seconds
      *
      * @return string
+     *   The secret found
      */
     private function getSecret(string $path, string $secret, string $id, ?int $version = null, ?int $expire = null): string
     {
