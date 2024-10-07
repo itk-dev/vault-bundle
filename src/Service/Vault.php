@@ -79,7 +79,7 @@ readonly class Vault
     {
         static $vaultClient = null;
 
-        if (null !== $vaultClient) {
+        if (is_null($vaultClient)) {
             $vaultClient = new VaultClient(
                 httpClient: $this->client,
                 requestFactory: $this->requestFactory,
