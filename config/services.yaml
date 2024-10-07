@@ -29,9 +29,9 @@ services:
             $secretId: '%env(string:VAULT_SECRET_ID)%'
 
     # Register the VaultEnvResolver
-#    App\Processor\VaultEnvResolver:
-#        arguments:
-#            $vaultUri: '%env(resolve:VAULT_URI)%'
-#            $vaultToken: '%env(string:VAULT_TOKEN)%'
-#        tags:
-#            - { name: 'container.env_var_processor' }
+    ItkDev\VaultBundle\Processor\VaultEnvResolver:
+        arguments:
+            $roleId: '%env(string:VAULT_ROLE_ID)%'
+            $secretId: '%env(string:VAULT_SECRET_ID)%'
+        tags:
+            - { name: 'container.env_var_processor' }

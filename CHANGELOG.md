@@ -8,6 +8,7 @@ See [keep a changelog] for information about writing changes to this log.
 
 ## [Unreleased]
 
+* Added enviroment processor
 * Added helper commands to interacrt with the vault
 * Statet on bundle
 

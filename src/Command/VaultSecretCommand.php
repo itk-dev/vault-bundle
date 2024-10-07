@@ -31,6 +31,7 @@ class VaultSecretCommand extends Command
             ->addOption('path', null, InputOption::VALUE_REQUIRED, 'Vault secret path (e.g. "prod", "dev", "test")')
             ->addOption('secret', null, InputOption::VALUE_REQUIRED, 'Name of the secret to fetch')
             ->addOption('ids', null, InputOption::VALUE_REQUIRED | InputOption::VALUE_IS_ARRAY, 'List of secret identifiers (e.g. "oidc", "pretix-apykey")')
+            ->addOption('version-id', null, InputOption::VALUE_REQUIRED, 'Version of the secret to fetch')
             ->addOption('useCache', null, InputOption::VALUE_NONE, 'Cache the token and secrets fetched')
             ->addOption('expire', null, InputOption::VALUE_REQUIRED, 'For how long the secrets should be cached (in seconds). The token will be cached based on its expiration time.')
             ->addOption('refresh', null, InputOption::VALUE_NONE, 'Should both token and secrets be refreshed from the vault (by-passing the cache)')
@@ -44,13 +45,23 @@ class VaultSecretCommand extends Command
         $path = $input->getOption('path');
         $secret = $input->getOption('secret');
         $ids = $input->getOption('ids');
+        $version = $input->getOption('version-id');
 
         $useCache = $input->getOption('useCache');
         $expire = (int) $input->getOption('expire');
         $refresh = $input->getOption('refresh');
 
         $token = $this->vaultService->login($this->roleId, $this->secretId);
-        $secrets = $this->vaultService->getSecrets($token, $path, $secret, $ids, $useCache, $refresh, $expire);
+        $secrets = $this->vaultService->getSecrets(
+            token: $token,
+            path: $path,
+            secret: $secret,
+            ids: $ids,
+            version: $version,
+            useCache: $useCache,
+            refreshCache: $refresh,
+            expire: $expire,
+        );
 
         // Prepare the data for the table
         $tableHeaders = ['Id', 'Secret', 'Version'];
