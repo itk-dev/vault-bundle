@@ -1,11 +1,11 @@
 # Vault bundle
 
-This bundle enables Symfony sites to interact with HashiCorp Vault using the "
-approle" authentication method. It allows fetching secrets and provides the
+This bundle enables Symfony sites to interact with HashiCorp Vault using the
+"approle" authentication method. It allows fetching secrets and provides the
 capability for local caching of both access tokens and the secrets themselves.
 
-The bundle offers a services wrapper for the PHP client
-library ([https://github.com/itk-dev/vault-library](https://github.com/itk-dev/vault-library)).
+The bundle offers a services wrapper for the PHP
+library [itk-dev/vault-library](https://github.com/itk-dev/vault-library).
 Additionally, it includes an environment variable processor, enabling the
 retrieval of secrets directly in `.env` files at runtime.
 
@@ -17,7 +17,7 @@ composer require itk-dev/vault-bundle
 
 ### Setup
 
-First enabled the bundle by editing `config/bundles.php` adding the bundle class
+Firstly, enable the bundle by editing `config/bundles.php` adding the bundle class
 to the return array in the file. Thereby loading the bundle when bootstrapping
 Symfony,
 
@@ -27,9 +27,9 @@ ItkDev\VaultBundle\ItkDevVaultBundle::class => ['all' => true],
 
 ## Usage
 
-Using the service, by simply injecting the service named `Vault` from the
+Use the service by simply injecting the service named `Vault` from the
 namespace `ItkDev\VaultBundle\Service`. Use the login function to fetch a token
-and the use this token with the `getSecrets` or `getSecret` function.
+and then use the acquired token in the `getSecret` or `getSecrets` functions.
 
 To use the environment variable processor, use the following format to specify
 what to retrieve from the vault:
@@ -62,5 +62,9 @@ This bundle also comes with two CLI commands to help debug configuration and to
 check that you fetch the expected data from the vault. Use the `--help` option
 to symfony console to see the options available for the commands.
 
-* itkdev:vault:login
-* itkdev:vault:secret
+* `itkdev:vault:login`
+* `itkdev:vault:secret`
+
+## Developing
+
+See details on contributing in the [contributing docs](/docs/CONTRIBUTING.md).

@@ -14,4 +14,4 @@ See [keep a changelog] for information about writing changes to this log.
 * Basic bundle setup.
 
 [keep a changelog]: https://keepachangelog.com/en/1.1.0/
-[unreleased]: https://github.com/itk-dev/vault-bundle/compare/main...develop
+[Unreleased]: https://github.com/itk-dev/vault-bundle/compare/main...develop

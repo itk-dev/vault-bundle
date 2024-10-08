@@ -18,6 +18,8 @@ readonly class VaultEnvResolver implements EnvVarProcessorInterface
     }
 
     /**
+     * Get the value of provided env variable.
+     *
      * @throws \DateMalformedStringException
      * @throws VaultException
      * @throws NotFoundException
