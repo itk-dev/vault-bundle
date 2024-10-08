@@ -16,7 +16,7 @@ use Symfony\Component\Console\Style\SymfonyStyle;
     name: 'itkdev:vault:login',
     description: 'Log into the vault and show token information',
 )]
-class VaultTokenCommand extends Command
+class VaultLoginCommand extends Command
 {
     public function __construct(
         private readonly Vault $vaultService,

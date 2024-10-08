@@ -18,7 +18,7 @@ services:
             $vaultUrl: '%env(resolve:VAULT_URL)%'
             $cache: '@Psr\SimpleCache\CacheInterface'
 
-    ItkDev\VaultBundle\Command\VaultTokenCommand:
+    ItkDev\VaultBundle\Command\VaultLoginCommand:
         arguments:
             $roleId: '%env(string:VAULT_ROLE_ID)%'
             $secretId: '%env(string:VAULT_SECRET_ID)%'
