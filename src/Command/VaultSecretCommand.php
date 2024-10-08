@@ -33,7 +33,7 @@ class VaultSecretCommand extends Command
         $this
             ->addOption('path', null, InputOption::VALUE_REQUIRED, 'Vault secret engine path)')
             ->addOption('secret', null, InputOption::VALUE_REQUIRED, 'Name of the secret to fetch')
-            ->addOption('keys', null, InputOption::VALUE_REQUIRED | InputOption::VALUE_IS_ARRAY, 'List of keys for secret to fetch')
+            ->addOption('keys', null, InputOption::VALUE_REQUIRED | InputOption::VALUE_IS_ARRAY, 'List of secret keys to fetch')
             ->addOption('version-id', null, InputOption::VALUE_REQUIRED, 'Version of the secret to fetch')
             ->addOption('useCache', null, InputOption::VALUE_NONE, 'Cache the token and secrets fetched')
             ->addOption('expire', null, InputOption::VALUE_REQUIRED, 'For how long the secrets should be cached (in seconds). The token will be cached based on its expiration time.')

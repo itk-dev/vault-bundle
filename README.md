@@ -40,7 +40,7 @@ MY_SECRET=<PATH>:<SECRET>:<KEY>:<VERSION>:<EXPIRE>
 
 * __Path__: The secret engine path (e.g. prod, stg, test)
 * __Secret__: Name of the secret in the engine (eg. itksites, dokk1)
-* __Key__: Secret identifier (eg. OIDC, pretix-api-key)
+* __Key__:  The secret key that should be fetched (eg. OIDC, pretix-api-key)
 * __Version__: Optional, fetch a specific version of the secret.
 * __Expire__: Optional, the number of seconds to cache the secret.
 

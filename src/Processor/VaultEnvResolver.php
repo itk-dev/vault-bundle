@@ -46,7 +46,7 @@ readonly class VaultEnvResolver implements EnvVarProcessorInterface
      * @param string $secret
      *   The name of the secret to fetch
      * @param string $key
-     *   The id of the secret
+     *   The secret key to fetch
      * @param int|null $version
      *   The version to fetch
      * @param int|null $expire
