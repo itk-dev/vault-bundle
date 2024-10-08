@@ -8,6 +8,8 @@ See [keep a changelog] for information about writing changes to this log.
 
 ## [Unreleased]
 
+## [0.0.1]
+
 * Changed ids/id for secrets to keys.
 * Added basic documentation in readme.
 * Added environment processor.
@@ -16,3 +18,4 @@ See [keep a changelog] for information about writing changes to this log.
 
 [keep a changelog]: https://keepachangelog.com/en/1.1.0/
 [Unreleased]: https://github.com/itk-dev/vault-bundle/compare/main...develop
+[0.0.1]: https://github.com/itk-dev/vault-library/compare/0.0.1...main
