@@ -45,7 +45,7 @@ readonly class VaultEnvResolver implements EnvVarProcessorInterface
      *   The vault path to use (e.g. "prod", "stg")
      * @param string $secret
      *   The name of the secret to fetch
-     * @param string $id
+     * @param string $key
      *   The id of the secret
      * @param int|null $version
      *   The version to fetch
@@ -60,14 +60,14 @@ readonly class VaultEnvResolver implements EnvVarProcessorInterface
      * @throws VaultException
      * @throws InvalidArgumentException
      */
-    private function getSecret(string $path, string $secret, string $id, ?int $version = null, ?int $expire = null): string
+    private function getSecret(string $path, string $secret, string $key, ?int $version = null, ?int $expire = null): string
     {
         $token = $this->vaultService->login($this->roleId, $this->secretId);
         $val = $this->vaultService->getSecret(
             token: $token,
             path: $path,
             secret: $secret,
-            id: $id,
+            key: $key,
             version: $version,
             useCache: !is_null($expire),
             expire: $expire ?? 0,

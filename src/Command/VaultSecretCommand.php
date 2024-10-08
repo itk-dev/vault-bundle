@@ -31,9 +31,9 @@ class VaultSecretCommand extends Command
     protected function configure(): void
     {
         $this
-            ->addOption('path', null, InputOption::VALUE_REQUIRED, 'Vault secret path (e.g. "prod", "dev", "test")')
+            ->addOption('path', null, InputOption::VALUE_REQUIRED, 'Vault secret engine path)')
             ->addOption('secret', null, InputOption::VALUE_REQUIRED, 'Name of the secret to fetch')
-            ->addOption('ids', null, InputOption::VALUE_REQUIRED | InputOption::VALUE_IS_ARRAY, 'List of secret identifiers (e.g. "oidc", "pretix-apykey")')
+            ->addOption('keys', null, InputOption::VALUE_REQUIRED | InputOption::VALUE_IS_ARRAY, 'List of keys for secret to fetch')
             ->addOption('version-id', null, InputOption::VALUE_REQUIRED, 'Version of the secret to fetch')
             ->addOption('useCache', null, InputOption::VALUE_NONE, 'Cache the token and secrets fetched')
             ->addOption('expire', null, InputOption::VALUE_REQUIRED, 'For how long the secrets should be cached (in seconds). The token will be cached based on its expiration time.')
@@ -54,7 +54,7 @@ class VaultSecretCommand extends Command
 
         $path = $input->getOption('path');
         $secret = $input->getOption('secret');
-        $ids = $input->getOption('ids');
+        $keys = $input->getOption('keys');
         $version = $input->getOption('version-id');
 
         $useCache = $input->getOption('useCache');
@@ -66,7 +66,7 @@ class VaultSecretCommand extends Command
             token: $token,
             path: $path,
             secret: $secret,
-            ids: $ids,
+            keys: $keys,
             version: $version,
             useCache: $useCache,
             refreshCache: $refresh,
