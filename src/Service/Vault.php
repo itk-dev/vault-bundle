@@ -41,13 +41,13 @@ readonly class Vault
      * @throws InvalidArgumentException
      * @throws NotFoundException
      */
-    public function getSecret(Token $token, string $path, string $secret, string $id, ?int $version = null, bool $useCache = false, bool $refreshCache = false, int $expire = 0): Secret
+    public function getSecret(Token $token, string $path, string $secret, string $key, ?int $version = null, bool $useCache = false, bool $refreshCache = false, int $expire = 0): Secret
     {
         return $this->getVault()->getSecret(
             token: $token,
             path: $path,
             secret: $secret,
-            id: $id,
+            key: $key,
             version: $version,
             useCache: $useCache,
             refreshCache: $refreshCache,
@@ -61,13 +61,13 @@ readonly class Vault
      * @throws InvalidArgumentException
      * @throws NotFoundException
      */
-    public function getSecrets(Token $token, string $path, string $secret, array $ids, ?int $version = null, bool $useCache = false, bool $refreshCache = false, int $expire = 0): array
+    public function getSecrets(Token $token, string $path, string $secret, array $keys, ?int $version = null, bool $useCache = false, bool $refreshCache = false, int $expire = 0): array
     {
         return $this->getVault()->getSecrets(
             token: $token,
             path: $path,
             secret: $secret,
-            ids: $ids,
+            keys: $keys,
             version: $version,
             useCache: $useCache,
             refreshCache: $refreshCache,
