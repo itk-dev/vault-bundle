@@ -8,6 +8,7 @@ See [keep a changelog] for information about writing changes to this log.
 
 ## [Unreleased]
 
+* Changed ids/id for secrets to keys.
 * Added basic documentation in readme.
 * Added environment processor.
 * Added helper commands to interact with the vault.
