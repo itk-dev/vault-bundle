@@ -74,11 +74,11 @@ class VaultSecretCommand extends Command
         );
 
         // Prepare the data for the table
-        $tableHeaders = ['Id', 'Secret', 'Version'];
+        $tableHeaders = ['Key', 'Secret', 'Version'];
         $tableRows = [];
         /** @var Secret $secret */
         foreach ($secrets as $secret) {
-            $tableRows[] = [$secret->id, $secret->value, $secret->version];
+            $tableRows[] = [$secret->key, $secret->value, $secret->version];
         }
         $io->table($tableHeaders, $tableRows);
 
