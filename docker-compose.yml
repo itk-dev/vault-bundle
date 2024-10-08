@@ -24,3 +24,14 @@ services:
       - PHP_IDE_CONFIG=serverName=localhost
     volumes:
       - .:/app
+
+
+  node:
+    image: node:20
+    networks:
+      - app
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    working_dir: /app
+    volumes:
+      - .:/app
