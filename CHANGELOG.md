@@ -8,6 +8,10 @@ See [keep a changelog] for information about writing changes to this log.
 
 ## [Unreleased]
 
+## [0.0.4]
+
+* Update packages requirements.
+
 ## [0.0.3]
 
 * Added configuration file (to not be dependent on environment variables).
@@ -27,6 +31,7 @@ See [keep a changelog] for information about writing changes to this log.
 
 [keep a changelog]: https://keepachangelog.com/en/1.1.0/
 [Unreleased]: https://github.com/itk-dev/vault-bundle/compare/0.0.2...head
+[0.0.4]: https://github.com/itk-dev/vault-library/compare/0.0.3...0.0.4
 [0.0.3]: https://github.com/itk-dev/vault-library/compare/0.0.2...0.0.3
 [0.0.2]: https://github.com/itk-dev/vault-library/compare/0.0.1...0.0.2
 [0.0.1]: https://github.com/itk-dev/vault-library//releases/tag/0.0.1
