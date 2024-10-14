@@ -15,7 +15,7 @@
         "php": "^8.0",
         "symfony/http-client": "^6.4|^7.0|^7.1|^7.2",
         "nyholm/psr7": "^1.8",
-        "itk-dev/vault": "^0.0.4",
+        "itk-dev/vault": "^0.0.5",
         "symfony/dependency-injection": "^6.4|^7.0|^7.1|^7.2",
         "symfony/config": "^7.1",
         "symfony/http-kernel": "^7.1"
