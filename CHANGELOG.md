@@ -8,6 +8,9 @@ See [keep a changelog] for information about writing changes to this log.
 
 ## [Unreleased]
 
+* Added configuration file (to not be dependent on environment variables).
+* Update vault library version (fixing cache issue).
+
 ## [0.0.2]
 
 * Allow older version of symfony and php to use the bundle.
