@@ -15,23 +15,13 @@ services:
 
     ItkDev\VaultBundle\Service\Vault:
         arguments:
-            $vaultUrl: '%env(resolve:VAULT_URL)%'
             $cache: '@Psr\SimpleCache\CacheInterface'
 
     ItkDev\VaultBundle\Command\VaultLoginCommand:
-        arguments:
-            $roleId: '%env(string:VAULT_ROLE_ID)%'
-            $secretId: '%env(string:VAULT_SECRET_ID)%'
 
     ItkDev\VaultBundle\Command\VaultSecretCommand:
-        arguments:
-            $roleId: '%env(string:VAULT_ROLE_ID)%'
-            $secretId: '%env(string:VAULT_SECRET_ID)%'
 
     # Register the VaultEnvResolver
     ItkDev\VaultBundle\Processor\VaultEnvResolver:
-        arguments:
-            $roleId: '%env(string:VAULT_ROLE_ID)%'
-            $secretId: '%env(string:VAULT_SECRET_ID)%'
         tags:
-            - { name: 'container.env_var_processor' }
+            - { name: 'container.env_var_processor', priority: 100 }

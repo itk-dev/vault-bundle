@@ -17,12 +17,15 @@ composer require itk-dev/vault-bundle
 
 ### Setup
 
-Firstly, enable the bundle by editing `config/bundles.php` adding the bundle class
-to the return array in the file. Thereby loading the bundle when bootstrapping
-Symfony,
+Create a configuration file at `config/packages/itkdev_vault.yaml` and add the
+three referenced variables to `.env` with placeholder values. Then add the
+actual values to `.env.local`.
 
-```php
-ItkDev\VaultBundle\ItkDevVaultBundle::class => ['all' => true],
+```yaml
+itkdev_vault:
+  role_id: '%env(VAULT_ROLE_ID)%'
+  secret_id: '%env(VAULT_SECRET_ID)%'
+  url: '%env(VAULT_URL)%'
 ```
 
 ## Usage
