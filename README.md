@@ -18,7 +18,7 @@ composer require itk-dev/vault-bundle
 ### Setup
 
 Create a configuration file at `config/packages/itkdev_vault.yaml` and add the
-three referenced variables to `.env` with placeholder values. Then add the 
+three referenced variables to `.env` with placeholder values. Then add the
 actual values to `.env.local`.
 
 ```yaml
