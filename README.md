@@ -1,4 +1,11 @@
-# Vault bundle
+# Vault Bundle
+
+[![Github](https://img.shields.io/badge/source-itk--dev/vault--bundle-blue?style=flat-square)](https://github.com/itk-dev/vault-bundle)
+[![Release](https://img.shields.io/packagist/v/itk-dev/vault-bundle.svg?style=flat-square&label=release)](https://packagist.org/packages/itk-dev/vault-bundle)
+[![PHP Version](https://img.shields.io/packagist/php-v/itk-dev/vault-bundle.svg?style=flat-square&colorB=%238892BF)](https://www.php.net/downloads)
+[![Build Status](https://img.shields.io/github/actions/workflow/status/itk-dev/vault-bundle/pr.yaml?label=CI&logo=github&style=flat-square)](https://github.com/itk-dev/vault-bundle/actions?query=workflow%3A%22Test+%26+Code+Style+Review%22)
+[![Read License](https://img.shields.io/packagist/l/itk-dev/vault-bundle.svg?style=flat-square&colorB=darkcyan)](https://github.com/itk-dev/vault-bundle/blob/master/LICENSE.md)
+[![Package downloads on Packagist](https://img.shields.io/packagist/dt/itk-dev/vault-bundle.svg?style=flat-square&colorB=darkmagenta)](https://packagist.org/packages/itk-dev/vault-bundle/stats)
 
 This bundle enables Symfony sites to interact with HashiCorp Vault using the
 "approle" authentication method. It allows fetching secrets and provides the
