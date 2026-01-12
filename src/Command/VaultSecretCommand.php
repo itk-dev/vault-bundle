@@ -32,13 +32,13 @@ class VaultSecretCommand extends Command
     protected function configure(): void
     {
         $this
-            ->addOption('path', null, InputOption::VALUE_REQUIRED, 'Vault secret engine path)')
+            ->addOption('path', null, InputOption::VALUE_REQUIRED, 'Vault secret engine path')
             ->addOption('secret', null, InputOption::VALUE_REQUIRED, 'Name of the secret to fetch')
             ->addOption('key', null, InputOption::VALUE_REQUIRED | InputOption::VALUE_IS_ARRAY, 'List of secret keys to fetch')
             ->addOption('version-id', null, InputOption::VALUE_REQUIRED, 'Version of the secret to fetch')
             ->addOption('useCache', null, InputOption::VALUE_NONE, 'Cache the token and secrets fetched')
             ->addOption('expire', null, InputOption::VALUE_REQUIRED, 'For how long the secrets should be cached (in seconds). The token will be cached based on its expiration time.')
-            ->addOption('refresh', null, InputOption::VALUE_NONE, 'Should both token and secrets be refreshed from the vault (by-passing the cache)')
+            ->addOption('refresh', null, InputOption::VALUE_NONE, 'Should both token and secrets be refreshed from the vault (bypassing the cache)')
         ;
     }
 

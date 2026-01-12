@@ -70,7 +70,7 @@ App\Command\TestCommand:
 
 This bundle also comes with two CLI commands to help debug configuration and to
 check that you fetch the expected data from the vault. Use the `--help` option
-to symfony console to see the options available for the commands.
+to Symfony console to see the options available for the commands.
 
 * `itkdev:vault:login`
 * `itkdev:vault:secret`
