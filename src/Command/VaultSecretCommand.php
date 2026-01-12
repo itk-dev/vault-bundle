@@ -6,9 +6,10 @@ use ItkDev\Vault\Exception\NotFoundException;
 use ItkDev\Vault\Exception\VaultException;
 use ItkDev\Vault\Model\Secret;
 use ItkDev\VaultBundle\Service\Vault;
-use Psr\SimpleCache\InvalidArgumentException;
+use Psr\SimpleCache\InvalidArgumentException as PsrSimpleCacheInvalidArgumentException;
 use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
+use Symfony\Component\Console\Exception\InvalidArgumentException;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -42,7 +43,7 @@ class VaultSecretCommand extends Command
     }
 
     /**
-     * @throws InvalidArgumentException
+     * @throws PsrSimpleCacheInvalidArgumentException
      * @throws NotFoundException
      * @throws VaultException
      * @throws \DateMalformedIntervalStringException
@@ -53,8 +54,17 @@ class VaultSecretCommand extends Command
         $io = new SymfonyStyle($input, $output);
 
         $path = $input->getOption('path');
+        if (null === $path) {
+            throw new InvalidArgumentException('The path option is required.');
+        }
         $secret = $input->getOption('secret');
+        if (null === $secret) {
+            throw new InvalidArgumentException('The secret option is required.');
+        }
         $keys = $input->getOption('keys');
+        if (empty($keys)) {
+            throw new InvalidArgumentException('At least one key must be specified.');
+        }
         $version = $input->getOption('version-id');
 
         $useCache = $input->getOption('useCache');
