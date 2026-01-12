@@ -19,8 +19,11 @@ retrieval of secrets directly in `.env` files at runtime.
 ## Install
 
 ```shell
-composer require itk-dev/vault-bundle
+composer require itk-dev/vault-bundle --no-scripts
 ```
+
+> [!NOTE]
+> We use `--no-scripts` since the bundle config may not yet have been created.
 
 ### Setup
 
