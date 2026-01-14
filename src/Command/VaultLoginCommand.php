@@ -30,7 +30,7 @@ class VaultLoginCommand extends Command
     {
         $this
             ->addOption('engine-path', null, InputOption::VALUE_REQUIRED, 'Authentication engine path', 'approle')
-            ->addOption('refresh', null, InputOption::VALUE_NONE, 'Refresh token from the vault (by-passing the cache)')
+            ->addOption('refresh', null, InputOption::VALUE_NONE, 'Refresh token from the vault (bypassing the cache)')
         ;
     }
 

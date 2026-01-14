@@ -8,6 +8,8 @@ See [keep a changelog] for information about writing changes to this log.
 
 ## [Unreleased]
 
+* Added support for Symfony 8
+
 ## [0.1.2]
 
 * Fixed action to auto create github release
@@ -44,8 +46,8 @@ See [keep a changelog] for information about writing changes to this log.
 * Basic bundle setup.
 
 [keep a changelog]: https://keepachangelog.com/en/1.1.0/
-[Unreleased]: https://github.com/itk-dev/vault-bundle/compare/0.1.0...head
-[0.1.1]: https://github.com/itk-dev/vault-library/compare/0.1.1...0.1.2
+[Unreleased]: https://github.com/itk-dev/vault-bundle/compare/0.1.2...head
+[0.1.2]: https://github.com/itk-dev/vault-library/compare/0.1.1...0.1.2
 [0.1.1]: https://github.com/itk-dev/vault-library/compare/0.1.0...0.1.1
 [0.1.0]: https://github.com/itk-dev/vault-library/compare/0.0.4...0.1.0
 [0.0.4]: https://github.com/itk-dev/vault-library/compare/0.0.3...0.0.4

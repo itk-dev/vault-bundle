@@ -6,9 +6,10 @@ use ItkDev\Vault\Exception\NotFoundException;
 use ItkDev\Vault\Exception\VaultException;
 use ItkDev\Vault\Model\Secret;
 use ItkDev\VaultBundle\Service\Vault;
-use Psr\SimpleCache\InvalidArgumentException;
+use Psr\SimpleCache\InvalidArgumentException as PsrSimpleCacheInvalidArgumentException;
 use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
+use Symfony\Component\Console\Exception\InvalidArgumentException;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -31,18 +32,18 @@ class VaultSecretCommand extends Command
     protected function configure(): void
     {
         $this
-            ->addOption('path', null, InputOption::VALUE_REQUIRED, 'Vault secret engine path)')
+            ->addOption('path', null, InputOption::VALUE_REQUIRED, 'Vault secret engine path')
             ->addOption('secret', null, InputOption::VALUE_REQUIRED, 'Name of the secret to fetch')
-            ->addOption('keys', null, InputOption::VALUE_REQUIRED | InputOption::VALUE_IS_ARRAY, 'List of secret keys to fetch')
+            ->addOption('key', null, InputOption::VALUE_REQUIRED | InputOption::VALUE_IS_ARRAY, 'List of secret keys to fetch')
             ->addOption('version-id', null, InputOption::VALUE_REQUIRED, 'Version of the secret to fetch')
             ->addOption('useCache', null, InputOption::VALUE_NONE, 'Cache the token and secrets fetched')
             ->addOption('expire', null, InputOption::VALUE_REQUIRED, 'For how long the secrets should be cached (in seconds). The token will be cached based on its expiration time.')
-            ->addOption('refresh', null, InputOption::VALUE_NONE, 'Should both token and secrets be refreshed from the vault (by-passing the cache)')
+            ->addOption('refresh', null, InputOption::VALUE_NONE, 'Should both token and secrets be refreshed from the vault (bypassing the cache)')
         ;
     }
 
     /**
-     * @throws InvalidArgumentException
+     * @throws PsrSimpleCacheInvalidArgumentException
      * @throws NotFoundException
      * @throws VaultException
      * @throws \DateMalformedIntervalStringException
@@ -53,8 +54,17 @@ class VaultSecretCommand extends Command
         $io = new SymfonyStyle($input, $output);
 
         $path = $input->getOption('path');
+        if (null === $path) {
+            throw new InvalidArgumentException('The path option is required.');
+        }
         $secret = $input->getOption('secret');
-        $keys = $input->getOption('keys');
+        if (null === $secret) {
+            throw new InvalidArgumentException('The secret option is required.');
+        }
+        $keys = $input->getOption('key');
+        if (empty($keys)) {
+            throw new InvalidArgumentException('At least one key must be specified.');
+        }
         $version = $input->getOption('version-id');
 
         $useCache = $input->getOption('useCache');
