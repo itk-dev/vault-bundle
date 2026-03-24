@@ -9,6 +9,15 @@ See [keep a changelog] for information about writing changes to this log.
 ## [Unreleased]
 
 * Added support for Symfony 8
+* Added PHPUnit test suite with 88% line coverage
+* Added PHPStan static analysis at max level
+* Added Taskfile-based development workflow
+* Added Docker test matrix for PHP 8.3, 8.4, and 8.5
+* Added split CI workflows (PHP, Composer, Markdown, YAML, Changelog)
+* Updated minimum PHP version to 8.3
+* Updated development tooling (markdownlint, Prettier via Docker)
+* Updated README and CONTRIBUTING docs with Taskfile commands
+* Removed legacy node/yarn tooling
 
 ## [0.1.2]
 
