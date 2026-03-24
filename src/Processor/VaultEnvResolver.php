@@ -27,6 +27,7 @@ readonly class VaultEnvResolver implements EnvVarProcessorInterface
      */
     public function getEnv(string $prefix, string $name, \Closure $getEnv): mixed
     {
+        /** @var string $nameValue */
         $nameValue = $getEnv($name);
         $params = explode(':', $nameValue);
 

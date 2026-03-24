@@ -31,6 +31,9 @@ class ItkDevVaultBundle extends AbstractBundle
         ;
     }
 
+    /**
+     * @param array<string, mixed> $config
+     */
     public function loadExtension(array $config, ContainerConfigurator $container, ContainerBuilder $builder): void
     {
         // Load an XML, PHP or YAML file
