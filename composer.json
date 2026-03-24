@@ -39,6 +39,11 @@
             "ItkDev\\VaultBundle\\": "src/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "ItkDev\\VaultBundle\\Tests\\": "tests/"
+        }
+    },
     "config": {
         "allow-plugins": {
             "ergebnis/composer-normalize": true,
