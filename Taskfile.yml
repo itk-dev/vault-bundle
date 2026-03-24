@@ -162,6 +162,7 @@ tasks:
               cp /app/vendor/.composer.lock /app/composer.lock
               composer install -q
             else
+              rm -f /app/composer.lock
               composer update -q --{{.PREFER}}
               cp /app/composer.lock /app/vendor/.composer.lock
             fi'
@@ -170,7 +171,7 @@ tasks:
   test:matrix:reset:
     desc: Remove cached vendor volumes to force a fresh dependency resolve
     cmds:
-      - "{{.DOCKER_COMPOSE}} down --volumes"
+      - "{{.DOCKER_COMPOSE}} --profile ci down --volumes"
 
   test:matrix:
     desc: Run tests across all PHP versions (mirrors CI matrix)

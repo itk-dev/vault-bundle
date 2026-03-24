@@ -143,7 +143,12 @@ final class VaultSecretCommandTest extends TestCase
         $vault ??= $this->createStub(Vault::class);
         $command = new VaultSecretCommand($vault, 'role-id', 'secret-id');
         $application = new Application();
-        $application->add($command);
+        // addCommand() is Symfony 7.1+, add() is the legacy name
+        if (method_exists($application, 'addCommand')) {
+            $application->addCommand($command);
+        } else {
+            $application->add($command);
+        }
 
         return new CommandTester($application->find('itkdev:vault:secret'));
     }
