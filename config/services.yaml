@@ -1,27 +1,27 @@
 services:
-    # default configuration for services in *this* file
-    _defaults:
-        autowire: true      # Automatically injects dependencies in your services.
-        autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
+  # default configuration for services in *this* file
+  _defaults:
+    autowire: true # Automatically injects dependencies in your services.
+    autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
 
-    # Register a PSR-6 to PSR-16 cache bridge
-    cache.simple:
-        class: Symfony\Component\Cache\Psr16Cache
-        arguments:
-            - '@cache.app' # Pass the PSR-6 adapter
+  # Register a PSR-6 to PSR-16 cache bridge
+  cache.simple:
+    class: Symfony\Component\Cache\Psr16Cache
+    arguments:
+      - "@cache.app" # Pass the PSR-6 adapter
 
-    # Alias the service for autowiring purposes
-    Psr\SimpleCache\CacheInterface: '@cache.simple'
+  # Alias the service for autowiring purposes
+  Psr\SimpleCache\CacheInterface: "@cache.simple"
 
-    ItkDev\VaultBundle\Service\Vault:
-        arguments:
-            $cache: '@Psr\SimpleCache\CacheInterface'
+  ItkDev\VaultBundle\Service\Vault:
+    arguments:
+      $cache: '@Psr\SimpleCache\CacheInterface'
 
-    ItkDev\VaultBundle\Command\VaultLoginCommand:
+  ItkDev\VaultBundle\Command\VaultLoginCommand:
 
-    ItkDev\VaultBundle\Command\VaultSecretCommand:
+  ItkDev\VaultBundle\Command\VaultSecretCommand:
 
-    # Register the VaultEnvResolver
-    ItkDev\VaultBundle\Processor\VaultEnvResolver:
-        tags:
-            - { name: 'container.env_var_processor', priority: 100 }
+  # Register the VaultEnvResolver
+  ItkDev\VaultBundle\Processor\VaultEnvResolver:
+    tags:
+      - { name: "container.env_var_processor", priority: 100 }
