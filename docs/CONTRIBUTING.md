@@ -2,45 +2,86 @@
 
 This document describes various tools used during development of this library.
 
+## Prerequisites
+
+- [Docker](https://www.docker.com/) and [Docker Compose](https://docs.docker.com/compose/)
+- [Taskfile](https://taskfile.dev/) (`task`)
+
 ## Install
 
-To install the dependencies required for the development and usage of this
-library, run `composer install` through the supplied docker compose setup.
+Set up the project (starts Docker containers and installs dependencies):
 
 ```shell
-docker compose run --rm phpfpm composer install
+task setup
+```
+
+Or step by step:
+
+```shell
+task up
+task composer:install
 ```
 
 ## Tests
 
 We use the [PHPUnit](https://phpunit.de/) testing framework.
 
-To run tests execute the following command:
+Run tests:
 
 ```shell
-docker compose run --rm phpfpm vendor/bin/phpunit --coverage-clover=coverage/unit.xml
+task test
+```
+
+Run tests with coverage:
+
+```shell
+task test:coverage
+```
+
+Run the full test matrix across PHP versions and dependency sets (mirrors CI):
+
+```shell
+task test:matrix
+```
+
+## Static analysis
+
+Run [PHPStan](https://phpstan.org/) at max level:
+
+```shell
+task analyze:php
 ```
 
 ## Check coding standards
 
-The following commands let you test that the code follows the coding
-standards we decided to adhere to in this project.
+Run all linters (PHP, Composer, Markdown, YAML):
 
 ```shell
-docker compose run --rm phpfpm composer coding-standards-check
+task lint
 ```
 
-### Check Markdown file
+Or individually:
 
 ```shell
-docker compose run --rm node yarn install
-docker compose run --rm node yarn run coding-standards-check
+task lint:php         # PHP CS Fixer (dry-run)
+task lint:composer    # Validate, normalize, audit
+task lint:markdown    # markdownlint
+task lint:yaml        # Prettier
 ```
 
 ## Apply coding standards
 
-You can automatically fix some coding styles issues by running:
+Fix code style issues automatically:
 
 ```shell
-docker compose run --rm phpfpm composer coding-standards-apply
+task lint:php:fix
+task lint:markdown:fix
+task lint:yaml:fix
+task composer:normalize
+```
+
+## Run all CI checks locally
+
+```shell
+task pr:actions
 ```

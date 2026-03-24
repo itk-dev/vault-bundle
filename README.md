@@ -3,7 +3,7 @@
 [![Github](https://img.shields.io/badge/source-itk--dev/vault--bundle-blue?style=flat-square)](https://github.com/itk-dev/vault-bundle)
 [![Release](https://img.shields.io/packagist/v/itk-dev/vault-bundle.svg?style=flat-square&label=release)](https://packagist.org/packages/itk-dev/vault-bundle)
 [![PHP Version](https://img.shields.io/packagist/php-v/itk-dev/vault-bundle.svg?style=flat-square&colorB=%238892BF)](https://www.php.net/downloads)
-[![Build Status](https://img.shields.io/github/actions/workflow/status/itk-dev/vault-bundle/pr.yaml?label=CI&logo=github&style=flat-square)](https://github.com/itk-dev/vault-bundle/actions?query=workflow%3A%22Test+%26+Code+Style+Review%22)
+[![Build Status](https://img.shields.io/github/actions/workflow/status/itk-dev/vault-bundle/php.yaml?label=CI&logo=github&style=flat-square)](https://github.com/itk-dev/vault-bundle/actions)
 [![Read License](https://img.shields.io/packagist/l/itk-dev/vault-bundle.svg?style=flat-square&colorB=darkcyan)](https://github.com/itk-dev/vault-bundle/blob/master/LICENSE.md)
 [![Package downloads on Packagist](https://img.shields.io/packagist/dt/itk-dev/vault-bundle.svg?style=flat-square&colorB=darkmagenta)](https://packagist.org/packages/itk-dev/vault-bundle/stats)
 
@@ -79,5 +79,49 @@ to Symfony console to see the options available for the commands.
 * `itkdev:vault:secret`
 
 ## Developing
+
+This project uses [Taskfile](https://taskfile.dev/) for development workflows.
+Run `task` to see all available commands.
+
+### Setup
+
+```shell
+task setup
+```
+
+This starts the Docker containers and installs dependencies.
+
+### Tests
+
+```shell
+task test
+```
+
+Run the full test matrix across PHP versions:
+
+```shell
+task test:matrix
+```
+
+### Code quality
+
+```shell
+task lint          # Run all linters (PHP, Composer, Markdown, YAML)
+task analyze:php   # Run PHPStan static analysis
+```
+
+Fix code style issues automatically:
+
+```shell
+task lint:php:fix
+task lint:markdown:fix
+task lint:yaml:fix
+```
+
+### All CI checks locally
+
+```shell
+task pr:actions
+```
 
 See details on contributing in the [contributing docs](/docs/CONTRIBUTING.md).
