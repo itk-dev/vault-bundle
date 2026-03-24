@@ -1,6 +1,6 @@
 # Contributing
 
-This document describes various tools used during development of this bundle.
+This document describes various tools used during development of this library.
 
 ## Install
 
@@ -9,6 +9,16 @@ library, run `composer install` through the supplied docker compose setup.
 
 ```shell
 docker compose run --rm phpfpm composer install
+```
+
+## Tests
+
+We use the [PHPUnit](https://phpunit.de/) testing framework.
+
+To run tests execute the following command:
+
+```shell
+docker compose run --rm phpfpm vendor/bin/phpunit --coverage-clover=coverage/unit.xml
 ```
 
 ## Check coding standards

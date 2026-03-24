@@ -1,5 +1,3 @@
 composer.lock
 vendor
-yarn.lock
-node_modules
 .php-cs-fixer.cache
