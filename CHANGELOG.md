@@ -8,6 +8,8 @@ See [keep a changelog] for information about writing changes to this log.
 
 ## [Unreleased]
 
+## [0.2.0]
+
 * Added support for Symfony 8
 
 ## [0.1.2]
