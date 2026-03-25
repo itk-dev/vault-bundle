@@ -65,13 +65,22 @@ class VaultSecretCommand extends Command
         if (empty($keys)) {
             throw new InvalidArgumentException('At least one key must be specified.');
         }
-        $version = $input->getOption('version-id');
+        /** @var string|null $versionRaw */
+        $versionRaw = $input->getOption('version-id');
+        $version = null !== $versionRaw ? (int) $versionRaw : null;
 
+        /** @var bool $useCache */
         $useCache = $input->getOption('useCache');
-        $expire = (int) $input->getOption('expire');
+        /** @var string|null $expireRaw */
+        $expireRaw = $input->getOption('expire');
+        $expire = (int) ($expireRaw ?? 0);
+        /** @var bool $refresh */
         $refresh = $input->getOption('refresh');
 
         $token = $this->vaultService->login($this->roleId, $this->secretId);
+        /** @var string $path */
+        /** @var string $secret */
+        /** @var array<string> $keys */
         $secrets = $this->vaultService->getSecrets(
             token: $token,
             path: $path,

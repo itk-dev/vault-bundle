@@ -56,6 +56,10 @@ readonly class Vault
     }
 
     /**
+     * @param array<string> $keys
+     *
+     * @return array<Secret>
+     *
      * @throws VaultException
      * @throws \DateMalformedStringException
      * @throws InvalidArgumentException
@@ -63,6 +67,7 @@ readonly class Vault
      */
     public function getSecrets(Token $token, string $path, string $secret, array $keys, ?int $version = null, bool $useCache = false, bool $refreshCache = false, int $expire = 0): array
     {
+        /** @var array<Secret> */
         return $this->getVault()->getSecrets(
             token: $token,
             path: $path,
@@ -83,6 +88,7 @@ readonly class Vault
      */
     private function getVault(): VaultClient
     {
+        /** @var VaultClient|null $vaultClient */
         static $vaultClient = null;
 
         if (is_null($vaultClient)) {

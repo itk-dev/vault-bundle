@@ -44,7 +44,9 @@ class VaultLoginCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $io = new SymfonyStyle($input, $output);
+        /** @var string $enginePath */
         $enginePath = $input->getOption('engine-path');
+        /** @var bool $refresh */
         $refresh = $input->getOption('refresh');
 
         $token = $this->vaultService->login($this->roleId, $this->secretId, $enginePath, $refresh);
