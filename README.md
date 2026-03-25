@@ -19,8 +19,11 @@ retrieval of secrets directly in `.env` files at runtime.
 ## Install
 
 ```shell
-composer require itk-dev/vault-bundle
+composer require itk-dev/vault-bundle --no-scripts
 ```
+
+> [!NOTE]
+> We use `--no-scripts` since the bundle config may not yet have been created.
 
 ### Setup
 
@@ -70,7 +73,7 @@ App\Command\TestCommand:
 
 This bundle also comes with two CLI commands to help debug configuration and to
 check that you fetch the expected data from the vault. Use the `--help` option
-to symfony console to see the options available for the commands.
+to Symfony console to see the options available for the commands.
 
 * `itkdev:vault:login`
 * `itkdev:vault:secret`
